@@ -60,7 +60,7 @@ function SellerRegister(){
 			if(request &&!request.data.success)
 			{
 
-				alert("Some or all of the inputs are invalid. Please try again");
+				alert("Some or all of the inputs are invalid add account. Please try again");
 				
 				resetForm();
 
@@ -77,7 +77,7 @@ function SellerRegister(){
 				})
 					if(result &&!result.data.success)
 					{
-					alert("Some or all of the inputs are invalid. Please try again");
+					alert("Some or all of the inputs are invalid add seller. Please try again");
 					async function fetchData3(){
 					const result = await axios.post('https://glacial-fjord-98034.herokuapp.com/runtime/deleteaccount', {
 						data:{
