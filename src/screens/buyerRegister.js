@@ -51,12 +51,21 @@ function BuyerRegister ()
 						'name' : name,
 						'mailing_address':address,
 						'phone':phone,
-						'credit':0,
+						'credit':200,
 						'account_id':request.data.account_id
 				})
 					if(result &&!result.data.success)
 					{
 					alert("Some or all of the inputs are invalid. Please try again");
+					async function fetchData3(){
+					const result = await axios.post('https://glacial-fjord-98034.herokuapp.com/runtime/deleteaccount', {
+						data:{
+						"account_id":request.data.account_id
+					
+					}
+					});
+					}
+					fetchData3()
 					resetForm();
 
 					}
@@ -83,82 +92,81 @@ function BuyerRegister ()
 		<div className="buyer_reg">
 			<form>
 			<label>
+
 				Enter your name
-				<br/>
+			</label>
+				<div>
 		      	<input
 			      	type='text'
 			      	placeholder='Name'
 			      	value={name}
 			      	onChange={event => setName(event.target.value)}
 		      	/>
-		    </label>
-		    <br/>
-		    <label>
-		    	Enter Mailing Address
-		    	<br/>
-		      	<input
-			      	type='text'
-			      	placeholder='Address'
-			      	value={address}
-			      	onChange={event => setAddress(event.target.value)}
-      			/>
-      		</label>
-      		<br/>
+				</div>
+		    
+		    
 		    <label>
 		    	Enter Phone Number
-		    	<br/>
+		    </label>
+			<div>
 		      	<input
 			      	type='text'
 			      	placeholder='Phone Number'
 			      	value={phone}
 			      	onChange={event => setPhone(event.target.value)}
       			/>
-      		</label>
-      		<br/>
+      		
+      		</div>
       		<label>
 				Enter a valid email address
-				<br/>
+			</label>
+				<div>
 		      	<input
 			      	type='text'
 			      	placeholder='Email address'
 			      	value={email}
 			      	onChange={event => setEmail(event.target.value)}
 		      	/>
-		    </label>
-		    <br/>
+				</div>
+		    
+		    
 		    <label>
 		    	Enter Password
-		    	<br/>
+			</label>
+		    	<div>
 		      	<input
 			      	type='password'
 			      	placeholder='Password'
 			      	value={password}
 			      	onChange={event => setPassword(event.target.value)}
       			/>
-      		</label>
-      		<br/>
+				</div>
+      		
+      		
       		<label>
 		    	Set a security question
-		    	<br/>
+			</label>
+		    	<div>
 		      	<input
 			      	type='text'
 			      	placeholder='Security question'
 			      	value={secques}
 			      	onChange={event => setSecques(event.target.value)}
       			/>
-      		</label>
-      		<br/>
+				</div>
+      		
+      		
       		<label>
 		    	Set an answer for your question
-		    	<br/>
+			</label>
+		    <div>
 		      	<input
 			      	type='text'
 			      	placeholder='Answer'
 			      	value={secans}
 			      	onChange={event => setSecans(event.target.value)}
       			/>
-      		</label>
-      		<br/>
+			</div>
       		
       		<button type='submit' onClick={handleClick}>Next</button>
 		    </form>

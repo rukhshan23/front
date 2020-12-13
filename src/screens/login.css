@@ -7,7 +7,7 @@ body, html, #root, .login {
  box-sizing: border-box;
  outline: none;
  border: solid 2px #1189de;
- border-radius: 4px;
+ border-radius: 10px;
  color: #292929;
  width: 100%;
  padding: 18px;

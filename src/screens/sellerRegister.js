@@ -1,5 +1,7 @@
 import React, { useState, useEffect} from 'react';
-import './buyerRegister.css';
+// import './styles/style.css'
+
+//import './buyerRegister.css';
 import axios from 'axios';
 import Select from 'react-select';
 
@@ -11,12 +13,27 @@ function SellerRegister(){
 	const [password,setPassword] = useState('');
 	const [secques,setSecques] = useState('');
 	const [secans,setSecans] = useState('');
+	const [history,setHistory] = useState([]);
 	const accounttypes=[
-		{label:"Admin Commission: 20% Number of Products allowed: 50",value:24},
-		{label:'Admin Commission: 50% Number of Products allowed: 110',value:25},
+		{label:"Admin Commission: 20% Number of Products allowed: 50",value:1},
+		{label:'Admin Commission: 50% Number of Products allowed: 110',value:2},
 
 	];
+	useEffect(() => {
+	async  function fetchData3() {
+		let url="https://glacial-fjord-98034.herokuapp.com/runtime/bringsubplans";
+		const request = await axios.get(url);
+		console.log(request.data)
+		setHistory(request.data);
+		return request
+	}
+	fetchData3()
+	})
 
+
+	const hist=history.map((obj,i)=>(
+		{label:["Admin Commission: "+ obj.comm_percentage + "% ","Number of Products allowed: "+obj.no_prod],value:obj.subs_id}
+		));
 	const resetForm=()=>{
 		
 		setSecans("");
@@ -44,6 +61,7 @@ function SellerRegister(){
 			{
 
 				alert("Some or all of the inputs are invalid. Please try again");
+				
 				resetForm();
 
 			}
@@ -60,6 +78,15 @@ function SellerRegister(){
 					if(result &&!result.data.success)
 					{
 					alert("Some or all of the inputs are invalid. Please try again");
+					async function fetchData3(){
+					const result = await axios.post('https://glacial-fjord-98034.herokuapp.com/runtime/deleteaccount', {
+						data:{
+						"account_id":request.data.account_id
+					
+					}
+					});
+					}
+					fetchData3()
 					resetForm();
 
 					}
@@ -85,80 +112,92 @@ function SellerRegister(){
 		<div className="seller_reg">
 			<form>
 			<label>
+
 				Enter your name
-				<br/>
+			</label>
+				<div>
 		      	<input
 			      	type='text'
 			      	placeholder='Name'
 			      	value={name}
 			      	onChange={event => setName(event.target.value)}
 		      	/>
-		    </label>
-		    <br/>
+				</div>
+		    
+		    
 		    <label>
 		    	Enter Phone Number
-		    	<br/>
+		    </label>
+			<div>
 		      	<input
 			      	type='text'
 			      	placeholder='Phone Number'
 			      	value={phone}
 			      	onChange={event => setPhone(event.target.value)}
       			/>
-      		</label>
-      		<br/>
+      		
+      		</div>
       		<label>
 				Enter a valid email address
-				<br/>
+			</label>
+				<div>
 		      	<input
 			      	type='text'
 			      	placeholder='Email address'
 			      	value={email}
 			      	onChange={event => setEmail(event.target.value)}
 		      	/>
-		    </label>
-		    <br/>
+				</div>
+		    
+		    
 		    <label>
 		    	Enter Password
-		    	<br/>
+			</label>
+		    	<div>
 		      	<input
 			      	type='password'
 			      	placeholder='Password'
 			      	value={password}
 			      	onChange={event => setPassword(event.target.value)}
       			/>
-      		</label>
-      		<br/>
+				</div>
+      		
+      		
       		<label>
 		    	Set a security question
-		    	<br/>
+			</label>
+		    	<div>
 		      	<input
 			      	type='text'
 			      	placeholder='Security question'
 			      	value={secques}
 			      	onChange={event => setSecques(event.target.value)}
       			/>
-      		</label>
-      		<br/>
+				</div>
+      		
+      		
       		<label>
 		    	Set an answer for your question
-		    	<br/>
+			</label>
+		    <div>
 		      	<input
 			      	type='text'
 			      	placeholder='Answer'
 			      	value={secans}
 			      	onChange={event => setSecans(event.target.value)}
       			/>
-      		</label>
-      		<br/>
+			</div>
+      		
+      		
       		<label>
       			Select a Subscription Plan
+			</label>
       		<Select 
 	      		defaultValue={subs}
-	      		options={accounttypes} 
+	      		options={hist} 
 	      		onChange={setSubs}
       		/>
-      		</label>
-      		<br/>
+      		
       		
       		<button type='submit' onClick={handleClick}>Next</button>
 		    </form>
