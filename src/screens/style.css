@@ -1,0 +1,76 @@
+
+div{margin:10 pixel;
+}
+body {
+    background-color: #282c34;
+    color: white;
+    padding: 40px;
+    font-family: Arial;
+    text-align: center;
+  }
+
+button {
+    background-color: #2a579b; /* Green */
+    border: none;
+    color: white;
+    margin: 10px;
+    padding: 10px 30px;
+    width: 20%;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+}
+
+input {
+    width: 25%;
+    padding: 12px 20px;
+    margin: 8px;
+    box-sizing: border-box;
+    border: 3px solid #ccc;
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+    outline: none;
+}
+
+label {
+    color: rgb(255, 255, 255);
+}
+
+h1[className="Nav"] {
+    color: rgb(25, 29, 60);
+    padding: 8px;
+}
+
+h2 {
+    background-color: #4c6d98; /* Green */
+    border: none;
+    color: white;
+    margin-bottom: 30px;
+    padding: 15px 20px;
+    width: 20%;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+}
+
+
+    h2 [className="link"] {
+        background-color: #ffffff; /* Green */
+        border: none;
+        color: white;
+        margin-bottom: 30px;
+        padding: 15px 20px;
+        width: 20%;
+        text-align: center;
+        text-decoration: none;
+        font-size: 16px;
+    }
+
+img {
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 5px;
+    width: 150px;
+}
