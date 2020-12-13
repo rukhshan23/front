@@ -4,7 +4,7 @@ import * as FaIcons from 'react-icons/fa';
 import* as AiIcons from 'react-icons/ai';
 import * as IoIcons from 'react-icons/io';
 import {Link} from 'react-router-dom';
-'beverages', 'crockery','electronics', 'snacks', 'sports', 'garments', 'grocery', 'cosmetics'
+//'beverages', 'crockery','electronics', 'snacks', 'sports', 'garments', 'grocery', 'cosmetics'
 export const SidebarData=[
 	{
 		title:'Electronics',
