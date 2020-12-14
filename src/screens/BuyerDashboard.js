@@ -28,7 +28,6 @@ function BuyerDash(){
 						
 						<NavLink activeClassName="active_class" to="/buyerdashboard/cart"> Shopping Cart</NavLink>
 
-						<NavLink activeClassName="active_class" to="/buyerdashboard/credit">  Credit </NavLink>
 
 						<NavLink activeClassName="active_class" to="/buyerdashboard/review"> Add Review</NavLink>
 							

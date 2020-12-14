@@ -24,14 +24,17 @@ const Search=({match})=>{
 
 	const handleClick1 = (obj) => {
 
-
-
-	if(user==-1)
+	if (quant>obj.stock)
 	{
-		back.push('/login');
+		alert("Quantity is more than stock")
+		
 	}
 	else
 	{
+
+
+	
+	
 		if (quant>0)
 		{
 		console.log(obj);
@@ -65,13 +68,17 @@ const Search=({match})=>{
 			alert("Enter a valid quantity");
 		}
 	
-	}
-
+		}
 		
 	}
 
 	useEffect(() => {
 	
+	if(user==-1)
+	{
+		back.push('/login');
+	}
+
 		
 		async  function fetchData() {
 		

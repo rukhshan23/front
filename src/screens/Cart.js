@@ -76,8 +76,10 @@ function Cart(){
 			{temp=obj.price*obj.quantity*(100-obj.discount)/100}
 			{bill=bill+temp}
 		</script>
-		<h2> total: {temp} </h2>
+		<div><h2> total: {temp} </h2></div>
+		<div>
 		<button type='submit' onClick={(i) => handleClick1(obj)}>Remove this item</button>
+		</div>
 		</div>
 
 		</>

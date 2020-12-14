@@ -72,7 +72,7 @@ function Checkout(){
 	let order_id=-1
 	async  function fetchData() 
 	{
-			let url="http://localhost:4000/runtime/additem"
+			let url="https://glacial-fjord-98034.herokuapp.com/runtime/additem"
 			const request = await axios.post(url,{
 					"order_id":-1,
 					"product_id":cart[0].product_id,
@@ -93,7 +93,7 @@ function Checkout(){
 				{
 					console.log(order_id);
 					async  function fetchData() {
-					let url="http://localhost:4000/runtime/additem"
+					let url="https://glacial-fjord-98034.herokuapp.com/runtime/additem"
 					const request = await axios.post(url,{
 					"order_id":order_id,
 					"product_id":cart[i].product_id,
@@ -116,7 +116,7 @@ function Checkout(){
 	for( var i=0; i<cart.length;i++)
 	{
 			async  function fetchData() {
-			let url="http://localhost:4000/runtime/deletecart";
+			let url="https://glacial-fjord-98034.herokuapp.com/runtime/deletecart";
 			const request = await axios.post(url,{
 			data:{
 			"buyer_id":cart[i].buyer_id,
@@ -142,7 +142,7 @@ function Checkout(){
 	for( var i=0; i<cart.length;i++)
 	{
 			async  function fetchData() {
-			let url="http://localhost:4000/runtime/deletecart";
+			let url="https://glacial-fjord-98034.herokuapp.com/runtime/deletecart";
 			const request = await axios.post(url,{
 			data:{
 			"buyer_id":cart[i].buyer_id,
