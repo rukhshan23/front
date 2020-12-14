@@ -41,25 +41,7 @@ function Checkout(){
 	}
 	},[])
 
-	const dunc=()=>{
-
-	async  function fetchData() 
-	{
-			let url="https://glacial-fjord-98034.herokuapp.com/runtime/decrementcredit"
-			const request = await axios.post(url,{
-			"buyer_id":user.buyer_id,
-			"val":credit
-					
-			});
-			console.log(request);
-			bill=bill-credit;
-			
-	}
 	
-
-	fetchData()
-	
-	}
 	
 
 	
@@ -113,72 +95,47 @@ function Checkout(){
 		
 	}
 	fetchData()
-	for( var i=0; i<cart.length;i++)
-	{
-			async  function fetchData() {
-			let url="https://glacial-fjord-98034.herokuapp.com/runtime/deletecart";
-			const request = await axios.post(url,{
-			data:{
-			"buyer_id":cart[i].buyer_id,
-			"product_id":cart[i].product_id
-			}
-			
-			
-			});
-			
-			console.log(request);
-			
-		}
-		fetchData()
-	}
-			
+	handleClick2()
 
-	alert("Order Placed!")
-	back.push("/")
 	}
 	
 	const handleClick2 = (obj) => {
 
-	for( var i=0; i<cart.length;i++)
-	{
-			async  function fetchData() {
-			let url="https://glacial-fjord-98034.herokuapp.com/runtime/deletecart";
-			const request = await axios.post(url,{
-			data:{
-			"buyer_id":cart[i].buyer_id,
-			"product_id":cart[i].product_id
+		for( var i=0; i<cart.length;i++)
+		{
+				async  function fetchData() {
+				let url="https://glacial-fjord-98034.herokuapp.com/runtime/deletecart";
+				const request = await axios.post(url,{
+				data:{
+				"buyer_id":cart[i].buyer_id,
+				"product_id":cart[i].product_id
+				}
+			
+			
+				});
+			
+				console.log(request);
+			
 			}
-			
-			
-			});
-			
-			console.log(request);
-			
+			fetchData()
 		}
-		fetchData()
-	}
-
 	
-		alert("Order Cancelled!")
-		back.push("/")
-	
-		
-
 	}
 
 
-	const handleChange = (evt) => {
-
-	if(credit>user.credit)
+	const handleChange = (evt) => 
 	{
-		alert("You have exceeded your credit amount");
-		setCredit(0);
 
-	}
-	else
-	{
-		setCredit(evt);
-	}
+		if(credit>user.credit)
+		{
+			alert("You have exceeded your credit amount");
+			setCredit(0);
+
+		}
+		else
+		{
+			setCredit(evt);
+		}
 	
 	}
 
@@ -222,4 +179,3 @@ function Checkout(){
 	
 }
 export default Checkout;
-

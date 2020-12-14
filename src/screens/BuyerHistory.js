@@ -33,7 +33,7 @@ function BuyerHistory(){
 		}
 		fetchData()
 	}
-	},[])
+	})
 
 	const hist=history.map((obj,i)=>(
 	<>
