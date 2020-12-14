@@ -41,7 +41,25 @@ function Checkout(){
 	}
 	},[])
 
+	const dunc=()=>{
+
+	async  function fetchData() 
+	{
+			let url="https://glacial-fjord-98034.herokuapp.com/runtime/decrementcredit"
+			const request = await axios.post(url,{
+			"buyer_id":user.buyer_id,
+			"val":credit
+					
+			});
+			console.log(request);
+			bill=bill-credit;
+			
+	}
 	
+
+	fetchData()
+	
+	}
 	
 
 	
@@ -95,47 +113,72 @@ function Checkout(){
 		
 	}
 	fetchData()
-	handleClick2()
+	for( var i=0; i<cart.length;i++)
+	{
+			async  function fetchData() {
+			let url="https://glacial-fjord-98034.herokuapp.com/runtime/deletecart";
+			const request = await axios.post(url,{
+			data:{
+			"buyer_id":cart[i].buyer_id,
+			"product_id":cart[i].product_id
+			}
+			
+			
+			});
+			
+			console.log(request);
+			
+		}
+		fetchData()
+	}
+			
 
+	alert("Order Placed!")
+	back.push("/")
 	}
 	
 	const handleClick2 = (obj) => {
 
-		for( var i=0; i<cart.length;i++)
-		{
-				async  function fetchData() {
-				let url="https://glacial-fjord-98034.herokuapp.com/runtime/deletecart";
-				const request = await axios.post(url,{
-				data:{
-				"buyer_id":cart[i].buyer_id,
-				"product_id":cart[i].product_id
-				}
-			
-			
-				});
-			
-				console.log(request);
-			
+	for( var i=0; i<cart.length;i++)
+	{
+			async  function fetchData() {
+			let url="https://glacial-fjord-98034.herokuapp.com/runtime/deletecart";
+			const request = await axios.post(url,{
+			data:{
+			"buyer_id":cart[i].buyer_id,
+			"product_id":cart[i].product_id
 			}
-			fetchData()
+			
+			
+			});
+			
+			console.log(request);
+			
 		}
+		fetchData()
+	}
+
 	
+		alert("Order Cancelled!")
+		back.push("/")
+	
+		
+
 	}
 
 
-	const handleChange = (evt) => 
+	const handleChange = (evt) => {
+
+	if(credit>user.credit)
 	{
+		alert("You have exceeded your credit amount");
+		setCredit(0);
 
-		if(credit>user.credit)
-		{
-			alert("You have exceeded your credit amount");
-			setCredit(0);
-
-		}
-		else
-		{
-			setCredit(evt);
-		}
+	}
+	else
+	{
+		setCredit(evt);
+	}
 	
 	}
 
