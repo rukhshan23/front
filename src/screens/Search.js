@@ -74,10 +74,6 @@ const Search=({match})=>{
 
 	useEffect(() => {
 	
-	if(user==-1)
-	{
-		back.push('/login');
-	}
 
 		
 		async  function fetchData() {
