@@ -124,24 +124,6 @@ function Cart(){
 		<h1> Your Orders </h1>
 		<div> {car}</div>
 		<h2> Your total Bill is {bill-credit}Rs </h2>
-		You have credit of Rs {user.credit}
-		{user.credit?
-		<>
-		<br/>
-		<label>
-		  Enter the amount of credit you want to use
-		  <br/>
-		  <input
-		  type='text'
-		  placeholder='Credit'
-		  value={credit}
-		 onChange={event => handleChange(event.target.value)}
-      	  />
-      	  </label>
-      	  <br/> 
-		  </>
-		  : ""}
-		  <br/>
 		
 		<button className="btn btn-outline-success" type='submit' onClick={handleClick2}> Proceed to checkout</button>
 

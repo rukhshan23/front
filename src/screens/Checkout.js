@@ -66,24 +66,58 @@ function Checkout(){
 
 	const handleClick1 = (obj) => {
 	
+	if (credit>user.credit)
+	{
+		alert("Insufficient Credit")
+		return;
+
+	}
+
+	async  function fetchData() 
+	{
+			let url="https://glacial-fjord-98034.herokuapp.com/runtime/updatecredit"
+			const request = await axios.post(url,{
+			"buyer_id":user.buyer_id,
+			"bill":user.bill
+					
+			});
+			
+	}
+	
+
+	fetchData()
+
+	const userdata={
+			"buyer_id": user.buyer_id,
+			"credit": user.credit-credit+0.01*user.bill,
+			"success": user.success,
+			"type": user.type,
+			"username": user.username,
+			"bill":bill
+		};
+		setUser(userdata);
+
 	
 
 		
 	let order_id=-1
+	var today = new Date(),
+    date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
+
 	async  function fetchData() 
 	{
 			let url="https://glacial-fjord-98034.herokuapp.com/runtime/additem"
 			const request = await axios.post(url,{
 					"order_id":-1,
 					"product_id":cart[0].product_id,
-					"discount":cart[0].dsicount,
+					"discount":cart[0].discount,
 					"quantity":cart[0].quantity,
 					"price":cart[0].price,
 					"seller_id":cart[0].seller_id,
 					"buyer_id":cart[0].buyer_id,
 					"shipping_status":0,
 					"credit_used":credit,
-					"date":"2000-10-11"
+					"date":date
 			});
 			if(request && request.data.success)
 			{
@@ -97,14 +131,14 @@ function Checkout(){
 					const request = await axios.post(url,{
 					"order_id":order_id,
 					"product_id":cart[i].product_id,
-					"discount":cart[i].dsicount,
+					"discount":cart[i].discount,
 					"quantity":cart[i].quantity,
 					"price":cart[i].price,
 					"seller_id":cart[i].seller_id,
 					"buyer_id":cart[i].buyer_id,
 					"shipping_status":0,
 					"credit_used":credit,
-					"date":"2000-10-11"});
+					"date":date});
 					}
 					fetchData()
 					
@@ -132,7 +166,7 @@ function Checkout(){
 		fetchData()
 	}
 			
-
+	dunc()
 	alert("Order Placed!")
 	back.push("/")
 	}
@@ -166,41 +200,30 @@ function Checkout(){
 
 	}
 
-
-	const handleChange = (evt) => {
-
-	if(credit>user.credit)
-	{
-		alert("You have exceeded your credit amount");
-		setCredit(0);
-
-	}
-	else
-	{
-		setCredit(evt);
-	}
-	
-	}
-
 	
 		return cart.length?
 		(
 		<>
+		<div>
 		<h2> Your total Bill is {user.bill-credit}Rs </h2>
+		</div>
+		<div>
 		You have credit of Rs {user.credit}
+		</div>
 		{user.credit?
 		<>
 		<br/>
 		<label>
 		  Enter the amount of credit you want to use
+		  </label>
 		  <br/>
 		  <input
 		  type='text'
 		  placeholder='Credit'
 		  value={credit}
-		 onChange={event => handleChange(event.target.value)}
+		 onChange={event => setCredit(event.target.value)}
       	  />
-      	  </label>
+     
       	  <br/> 
 		   
 		  </>
