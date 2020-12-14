@@ -1,5 +1,6 @@
 import logo from './logo.svg';
 import './App.css';
+import Listing from './screens/listing';
 import Login from './screens/login';
 import Register from './screens/newregister';
 import BuyerRegister from './screens/buyerRegister';
@@ -62,6 +63,7 @@ function App() {
 		<Route exact path='/buyerdashboard/history' component={BuyerHistory} />
 		<Route exact path='/sellermiddashboard' component={SellerMidDash} />
 		<Route exact path='/sellerdashboard/postproduct' component={SellerDashboard} />
+		<Route exact path='/sellerdashboard/listing' component={Listing} />
 		<Route exact path='/search/:name' component={Search} />
 		<Route exact path='/buyerdashboard/cart' component={Cart} />
 		<Route exact path='/buyerdashboard/checkout' component={Checkout} />

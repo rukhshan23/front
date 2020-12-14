@@ -53,26 +53,28 @@ function SellerReq()
             <form>
             <label>
 				Enter Product's Name
-				<br/>
+				</label>
+				<div>
 		      	<input
 			      	type='text'
 			      	placeholder='Name'
 			      	value={name}
 			      	onChange={event => setName(event.target.value)}
 		      	/>
-		    </label>
-		    <br/>
+		      	</div>
+		    
             <label>
 				Enter Product's ID
-				<br/>
+				</label>
+
+				<div>
 		      	<input
 			      	type='text'
 			      	placeholder='ID'
 			      	value={product_id}
 			      	onChange={event => setProd(event.target.value)}
 		      	/>
-		    </label>
-		    <br/>
+		      	</div>
             <button type='submit' onClick={handleClick}>Send Request</button>
             </form>
         </div>

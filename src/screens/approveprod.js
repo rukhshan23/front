@@ -15,7 +15,7 @@ const {user, setUser}=useContext(UserContext);
 		console.log(id);
 		id=id.toString();
 		async  function fetchData() {
-			const request = await axios.post('https://glacial-fjord-98034.herokuapp.com/runtime/runtime/adminapproval',{
+			const request = await axios.post('https://glacial-fjord-98034.herokuapp.com/runtime/adminapproval',{
 				"product_id" : id
 			})
 			if(request && request.data.success)
@@ -30,7 +30,7 @@ const {user, setUser}=useContext(UserContext);
     const handleClick2 = (id) => {
 		id=id.toString();
 		async  function fetchData() {
-			const request = await axios.post('https://glacial-fjord-98034.herokuapp.com/runtime/runtime/adminrejection',{
+			const request = await axios.post('https://glacial-fjord-98034.herokuapp.com/runtime/adminrejection',{
 				"product_id" : id
 			})
 			if(request && request.data.success)

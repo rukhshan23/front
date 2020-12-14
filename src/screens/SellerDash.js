@@ -70,25 +70,6 @@ const SellerDash = () => {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 		const handleClick2 = (evt) => {
 	evt.preventDefault();
 	console.log(user);
@@ -138,8 +119,6 @@ const SellerDash = () => {
       		/>
       		</label>
       	</form>
-	
-			<button type='submit' onClick={handleClick2}>List</button>
 			<button type='submit' onClick={handleClick}>Post</button>
 		</div>
 	);

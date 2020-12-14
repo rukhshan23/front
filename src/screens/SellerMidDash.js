@@ -22,7 +22,7 @@ function BuyerDash(){
 				<div className="NavBar">
 					<ul className="navbar-nav ml-auto mb-2 mb-lg-0">
 							
-						<NavLink activeClassName="active_class" to="/sellerdashboard/listproducts"> Your Products</NavLink>
+						<NavLink activeClassName="active_class" to="/sellerdashboard/listing"> Your Products</NavLink>
 						
 						<NavLink activeClassName="active_class" to="/sellerdashboard/postproduct"> Post Product</NavLink>
 
